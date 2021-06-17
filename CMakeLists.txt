@@ -3,8 +3,11 @@ cmake_minimum_required(VERSION 3.12)
 # Change your executable name to something creative!
 set(NAME pico-rgb-keypad-lights-out)
 
-# Make sure you symlink this file into the project directory
-# eg: ln -s ../pico-sdk/external/pico_sdk_import.cmake .
+# Include the Pimoroni Pico libraries
+# By default they assume `pimoroni-pico` is stored alongside your project
+include(pimoroni_pico_import.cmake)
+
+# Include the Pico SDK
 include(pico_sdk_import.cmake)
 
 # Gooey boilerplate
@@ -21,9 +24,7 @@ add_executable(${NAME}
 )
 
 # Include required libraries
-# This assumes `pimoroni-pico` is stored alongside your project
-include(../pimoroni-pico/libraries/pico_rgb_keypad/pico_rgb_keypad.cmake)
-# include(../pimoroni-pico/libraries/pico_display/pico_display.cmake)
+include(libraries/pico_rgb_keypad/pico_rgb_keypad)
 
 # Don't forget to link the libraries you need!
 target_link_libraries(${NAME}
